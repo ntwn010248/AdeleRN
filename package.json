@@ -1,0 +1,49 @@
+{
+  "name": "hinative",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@pusher/chatkit": "^0.7.12",
+    "@pusher/chatkit-server": "^0.12.2",
+    "appcenter": "^1.4.0",
+    "appcenter-analytics": "^1.4.0",
+    "appcenter-crashes": "^1.4.0",
+    "axios": "^0.18.0",
+    "firebase": "^5.0.3",
+    "native-base": "^2.4.2",
+    "react": "16.3.0-alpha.1",
+    "react-native": "0.54.3",
+    "react-native-app-link": "^1.0.0",
+    "react-native-camera": "^1.1.4",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-game-engine": "^0.9.0",
+    "react-native-gifted-chat": "^0.4.3",
+    "react-native-interactable": "^0.1.10",
+    "react-native-loading-spinner-overlay": "^0.5.2",
+    "react-native-modal": "^6.5.0",
+    "react-native-recording": "^0.4.1",
+    "react-native-screen-recorder": "^1.0.6",
+    "react-native-voximplant": "^0.2.1",
+    "react-navigation": "^2.0.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-axios-middleware": "^4.0.0",
+    "stream": "0.0.2",
+    "survey-react": "^1.0.23",
+    "tcomb-form-native": "^0.6.12",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.3",
+    "react-test-renderer": "16.3.0-alpha.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
