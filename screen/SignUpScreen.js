@@ -43,23 +43,28 @@ export default class SignUpScreen extends React.Component {
   render() {
     return (
       <Container style = {styles.container}>
-          <Button style = {{ marginTop: 20 }}
+        <Text style={styles.call_title}>Choose a mean of communication.</Text>
+          <Button
+            style = {styles.call_button}
             full
             rounded
+            bordered
             primary
             block
             onPress = {() => this.skypeCall()}
           >
-            <Text style = {{ color: 'white' }}>Skype call</Text>
+            <Text style = {styles.call_button_text}>Skype call</Text>
           </Button>
 
-          <Button style = {{ marginTop: 20 }}
+          <Button
+            style = {styles.call_button}
             full
             rounded
+            bordered
             success
             onPress = {() => this.lineCall()}
           >
-            <Text style = {{ color: 'white' }}>Line call</Text>
+            <Text style = {styles.call_button_text}>Line call</Text>
           </Button>
       </Container>
     );
@@ -74,4 +79,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10
   },
+  call_title: {
+    fontSize: 19,
+    color: '#1B4F72',
+    position: 'absolute',
+    top: 0,
+    margin: 20
+  },
+  call_button: {
+    margin: 20,
+    height: '25%',
+  },
+  call_button_text: {
+    fontSize: 20
+  }
 });

@@ -32,7 +32,7 @@ export default class DrawerContainer extends React.Component {
     return (
       <Container>
         <Header>
-          <Text>Email: {user? user.email: No}</Text>
+          <Text style={styles.header_title}>Email: {user? user.email: No}</Text>
         </Header>
         <Text
           onPress={() => {navigation.navigate('MainScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
@@ -61,7 +61,7 @@ export default class DrawerContainer extends React.Component {
         </Text>
         <Text
           onPress={() => {this.logoutUser();  navigation.dispatch(DrawerActions.closeDrawer());}}
-          style={styles.uglyDrawerItem}>
+          style={styles.logout_button}>
           LogOut
         </Text>
       </Container>
@@ -72,17 +72,32 @@ export default class DrawerContainer extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f6f6f6',
+    backgroundColor: '#F5EEF8',
     paddingTop: 40,
-    paddingHorizontal: 20
+    paddingHorizontal: 10
   },
   uglyDrawerItem: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#E73536',
-    padding: 15,
-    margin: 5,
-    borderRadius: 2,
+    padding: 10,
+    margin: 10,
+    borderRadius: 5,
+    borderColor: '#E73536',
+    borderWidth: 1,
+    textAlign: 'center'
+  },
+  header_title: {
+    fontSize: 16,
+  },
+  logout_button: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
+    backgroundColor: '#E73536',
+    padding: 10,
+    margin: 10,
+    borderRadius: 5,
     borderColor: '#E73536',
     borderWidth: 1,
     textAlign: 'center'
