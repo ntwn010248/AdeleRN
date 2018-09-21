@@ -11,15 +11,15 @@ import EditProfileScreen from './screen/EditProfileScreen';
 import FriendScreen from './screen/FriendScreen';
 import DrawerContainer from './container/DrawerContainer';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBNlR1obPdvgp0nrypjWLq7E6Q5-xwv7bM",
-  authDomain: "login-test-da0d1.firebaseapp.com",
-  databaseURL: "https://login-test-da0d1.firebaseio.com",
-  projectId: "login-test-da0d1",
-  storageBucket: "login-test-da0d1.appspot.com",
-  messagingSenderId: "5932728296",
+const config = {
+    apiKey: "AIzaSyBXRkuNij7fyKJpdOPJ1WjKUGGDVxaL9PM",
+    authDomain: "cs-project-2b4c7.firebaseapp.com",
+    databaseURL: "https://cs-project-2b4c7.firebaseio.com",
+    projectId: "cs-project-2b4c7",
+    storageBucket: "cs-project-2b4c7.appspot.com",
+    messagingSenderId: "532843476695"
   };
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 
 
@@ -44,6 +44,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10
   },
+  icon_style: {
+    color: 'white'
+  }
 });
 const Drawer = new DrawerNavigator({
   MainScreen : {screen: MainScreen},
@@ -60,7 +63,9 @@ const MenuButton = (navigation) => (
     transparent
     onPress = {() => navigation.dispatch(DrawerActions.openDrawer())}
   >
-    <Icon name="menu" />
+    <Icon
+      name="menu"
+      style={styles.icon_style} />
   </Button>
 );
 const DrawerStack = new StackNavigator({
@@ -69,7 +74,7 @@ const DrawerStack = new StackNavigator({
 {
   headerMode:"float",
   navigationOptions: ({navigation}) => ({
-    headerStyle: {backgroundColor: '#4C3E54'},
+    headerStyle: {backgroundColor: '#76448A'},
     title: 'Welcome!',
     headerTintColor: 'white',
     headerLeft: MenuButton(navigation)

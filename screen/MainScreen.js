@@ -17,21 +17,7 @@ export default class MainScreen extends React.Component {
   render() {
     return (
       <Container>
-        <Grid>
-            <Row style={{ backgroundColor: '#FFF'}} onPress={() => {this.props.navigation.navigate('LoginScreen');}}>
-                <Text style = {{fontSize: 50, textAlign: 'right'}}>{'\n'}Messenger</Text>
-            </Row>
-            <Row style={{ backgroundColor: '#ffd306'}} onPress={() => {this.props.navigation.navigate('FriendScreen');}}>
-                <Text style = {{fontSize: 50, textAlign: 'right'}}>{'\n'}Friends</Text>
-            </Row>
-            <Row style={{ backgroundColor: '#00CE9F'}} onPress={() => {this.props.navigation.navigate('SignUpScreen');}}>
-                <Text style = {{fontSize: 50, textAlign: 'justify'}}>{'\n'}Calling</Text>
-            </Row>
-            <Row style={{ backgroundColor: '#ff79bc'}} onPress={() => {this.props.navigation.navigate('SurveyScreen');}}>
-                <Text style = {{fontSize: 50, textAlign: 'justify'}}>{'\n'}Survey</Text>
-            </Row>
-
-        </Grid>
+        <Label style={styles.article_title}>Main Screen (Article)</Label>
       </Container>
     );
   }
@@ -43,4 +29,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10
   },
+  article_title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 10
+  }
 });

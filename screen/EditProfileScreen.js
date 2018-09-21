@@ -25,8 +25,8 @@ export default class EditProfileScreen extends React.Component {
   render() {
     return (
         <Container style = {styles.container}>
- 
-          <Label>1. Name</Label>
+
+          <Label style={styles.profile_title}>Name</Label>
           <Item>
             <Input
               secureTextEntry = {false}
@@ -37,8 +37,8 @@ export default class EditProfileScreen extends React.Component {
             />
           </Item>
 
-          <Label>2. Gender</Label>
-          
+          <Label style={styles.profile_title}>Gender</Label>
+
             <Picker
               mode = "dropdown"
               iosIcon = {<Icon name="add" />}
@@ -53,11 +53,11 @@ export default class EditProfileScreen extends React.Component {
               <Picker.Item label = "Female" value = "Female" />
               <Picker.Item label = "Other" value = "Other" />
             </Picker>
-         
 
-          <Label>3. Birthday</Label>
+
+          <Label style={styles.profile_title}>Birthday</Label>
           <DatePicker
-            style = {{width: 200}}
+            style = {styles.date_picker}
             date = {this.state.birthday}
             mode = "date"
             placeholder = {this.state.birthday}
@@ -84,11 +84,12 @@ export default class EditProfileScreen extends React.Component {
             full
             rounded
             warning
+            style={styles.profile_button}
             onPress = {() => {this.sendSurvey(this.state.name, this.state.gender, this.state.birthday); this.props.navigation.navigate('MainScreen');}}
           >
             <Text style = {{ color: 'white' }}>Send answer</Text>
           </Button>
-     
+
       </Container>
     );
   }
@@ -101,4 +102,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 10
   },
+  profile_title: {
+    fontSize: 18,
+    marginTop: 30,
+    textAlign: 'left',
+    marginLeft: '5%'
+  },
+  date_picker: {
+    width: 200,
+    paddingTop: 10,
+    paddingBottom: 20
+  },
+  profile_button: {
+    marginTop: 100,
+  }
 });
