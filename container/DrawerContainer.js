@@ -35,6 +35,11 @@ export default class DrawerContainer extends React.Component {
           <Text style={styles.header_title}>Email: {user? user.email: No}</Text>
         </Header>
         <Text
+          onPress={() => {navigation.navigate('NewsScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
+          style={styles.uglyDrawerItem}>
+          NewsScreen
+        </Text>
+        <Text
           onPress={() => {navigation.navigate('MainScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
           style={styles.uglyDrawerItem}>
           MainScreen

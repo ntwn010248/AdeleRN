@@ -9,6 +9,7 @@ import SignUpScreen  from './screen/SignUpScreen';
 import MainScreen from './screen/MainScreen';
 import EditProfileScreen from './screen/EditProfileScreen';
 import FriendScreen from './screen/FriendScreen';
+import NewsScreen from './screen/NewsScreen';
 import DrawerContainer from './container/DrawerContainer';
 
 const config = {
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
   }
 });
 const Drawer = new DrawerNavigator({
+  NewsScreen: {screen: NewsScreen},
   MainScreen : {screen: MainScreen},
   LoginScreen : {screen: LoginScreen},
   FriendScreen : {screen: FriendScreen},
@@ -96,6 +98,7 @@ const LoginStack = new StackNavigator({
 const AppStackNavigator = new StackNavigator({
   LoginStack : {screen: LoginStack},
   DrawerStack : {screen: DrawerStack},
+  NewsScreen: {screen: NewsScreen},
   MainScreen : {screen: MainScreen},
   LoginScreen : {screen: LoginScreen},
   FriendScreen : {screen: FriendScreen},
