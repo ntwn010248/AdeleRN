@@ -32,7 +32,7 @@ export default class DrawerContainer extends React.Component {
     return (
       <Container>
         <Header>
-          <Text style={styles.header_title}>Email: {user? user.email: No}</Text>
+         <Text style={styles.header_title}>Email: {user? user.email: No}</Text>
         </Header>
         <Text
           onPress={() => {navigation.navigate('MainScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
@@ -40,7 +40,7 @@ export default class DrawerContainer extends React.Component {
           MainScreen
         </Text>
         <Text
-          onPress={() => {navigation.navigate('LoginScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
+          onPress={() => {navigation.navigate('SearchScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
           style={styles.uglyDrawerItem}>
           Messenger
         </Text>
@@ -48,11 +48,6 @@ export default class DrawerContainer extends React.Component {
           onPress={() => {navigation.navigate('SignUpScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
           style={styles.uglyDrawerItem}>
           Calling
-        </Text>
-        <Text
-          onPress={() => {navigation.navigate('FriendScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}
-          style={styles.uglyDrawerItem}>
-          Find Friends
         </Text>
         <Text
           onPress={() => {navigation.navigate('EditProfileScreen'); navigation.dispatch(DrawerActions.closeDrawer());}}

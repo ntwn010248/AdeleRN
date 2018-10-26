@@ -3,9 +3,10 @@ import android.content.Intent;
 import com.shinetechchina.react_native_screen_recorder.RecordService;  // <-- add this import
 import com.shinetechchina.react_native_screen_recorder.ScreenRecorderPackage; // <-- add this import
 import android.app.Application;
+import com.wix.reactnativenotifications.RNNotificationsPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.facebook.react.ReactApplication;
-import com.oblador.vectoricons.VectorIconsPackage;
+import com.bitgo.randombytes.RandomBytesPackage;
 import com.wix.interactable.Interactable;
 import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
 import com.microsoft.appcenter.reactnative.analytics.AppCenterReactNativeAnalyticsPackage;
@@ -32,7 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new VectorIconsPackage(),
+            new RandomBytesPackage(),
             new RNCameraPackage(),
             new Interactable(),
             new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
@@ -40,7 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
             new AppCenterReactNativePackage(MainApplication.this),
             new VoxImplantReactPackage(),
             new RecordingPackage(),
-            new ScreenRecorderPackage() // <-- add this line
+            new ScreenRecorderPackage(), // <-- add this line
+            new RNNotificationsPackage(MainApplication.this)
       );
     }
 

@@ -1,17 +1,44 @@
 import React from 'react';
 import { Container, Content, Header, Form, Item, Input, Icon, Label, Text, Left, Picker, Button} from 'native-base';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, BackHandler } from 'react-native';
 import AppLink from 'react-native-app-link';
-import DatePicker from 'react-native-datepicker'
+import ScreenRecorderManager from 'react-native-screen-recorder'
 export default class SignUpScreen extends React.Component {
-  constructor() {
-    super();
-    this.state = ({
-      email: '123',
-      password: '123456',
-      states: 'login',
-      name: 'meow'
-    });
+  _didFocusSubscription;
+  _willBlurSubscription;
+  constructor(props) {
+    
+    super(props);
+    this._didFocusSubscription = props.navigation.addListener('didFocus', payload =>
+    BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
+  );
+  }
+  start() {
+    ScreenRecorderManager.start()
+  }
+  stop() {
+    ScreenRecorderManager.stop()
+
+  }
+  componentDidMount() {
+
+    this._willBlurSubscription = this.props.navigation.addListener('willBlur', payload =>
+      BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
+    );
+  }
+  onBackButtonPressAndroid = () => {
+    if (this.isSelectionModeEnabled()) {
+      this.disableSelectionMode();
+      alert('wow')
+      return true;
+    } else {
+      alert('yes')
+      return false;
+    }
+  };
+  componentWillUnmount() {
+    this._didFocusSubscription && this._didFocusSubscription.remove();
+    this._willBlurSubscription && this._willBlurSubscription.remove();
   }
   /* Skype call */
   skypeCall = () => {
@@ -43,20 +70,20 @@ export default class SignUpScreen extends React.Component {
   render() {
     return (
       <Container style = {styles.container}>
-        <Text style={styles.call_title}>Choose a mean of communication.</Text>
-          <Button
-            style = {styles.call_button}
+      <Text style={styles.call_title}>Choose a mean of communication.</Text>
+      <Button
+        style = {styles.call_button}
             full
             rounded
-            bordered
             primary
             block
+            bordered
             onPress = {() => this.skypeCall()}
           >
             <Text style = {styles.call_button_text}>Skype call</Text>
           </Button>
 
-          <Button
+            <Button
             style = {styles.call_button}
             full
             rounded
@@ -65,6 +92,26 @@ export default class SignUpScreen extends React.Component {
             onPress = {() => this.lineCall()}
           >
             <Text style = {styles.call_button_text}>Line call</Text>
+          </Button>
+          <Button
+            style = {styles.call_button}
+            full
+            rounded
+            bordered
+            success
+            onPress = {() => this.start()}
+        >
+          <Text style = {styles.call_button_text}>start</Text>
+          </Button>
+        <Button
+            style = {styles.call_button}
+            full
+            rounded
+            bordered
+            success
+            onPress = {() => this.stop()}
+        >
+            <Text style = {styles.call_button_text}>stop</Text>
           </Button>
       </Container>
     );

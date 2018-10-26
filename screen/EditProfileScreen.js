@@ -22,26 +22,38 @@ export default class EditProfileScreen extends React.Component {
       birthday: birthday
     });
   }
+  logoutUser = () => {
+    const { pop } = this.props.navigation;
+    try {
+      firebase.auth().signOut().then(() => {
+        pop();
+        console.log("Log out!")
+      })
+    }
+    catch(error) {
+      console.log(error.toString())
+    }
+  }
   render() {
     return (
         <Container style = {styles.container}>
 
-          <Label style={styles.profile_title}>Name</Label>
+          <Label style={styles.profile_title}>姓名</Label>
           <Item>
             <Input
               secureTextEntry = {false}
               autoCorrect = {false}
               autoCapitalize = "none"
-              placeholder = "Type in name"
+              placeholder = "請在此輸入姓名"
               onChangeText = {(name) => this.setState({ name })}
             />
           </Item>
 
-          <Label style={styles.profile_title}>Gender</Label>
+          <Label style={styles.profile_title}>性別</Label>
 
             <Picker
               mode = "dropdown"
-              iosIcon = {<Icon name="add" />}
+              iosIcon = {<Icon name="ios-arrow-down" />}
               style = {{ width: undefined }}
               placeholder = "Select gender"
               placeholderStyle = {{ color: "#bfc6ea" }}
@@ -49,13 +61,13 @@ export default class EditProfileScreen extends React.Component {
               selectedValue = {this.state.gender}
               onValueChange = {(gender) => this.setState({gender})}
             >
-              <Picker.Item label = "Male" value = "Male" />
-              <Picker.Item label = "Female" value = "Female" />
-              <Picker.Item label = "Other" value = "Other" />
+              <Picker.Item label = "男" value = "Male" />
+              <Picker.Item label = "女" value = "Female" />
+              <Picker.Item label = "其他" value = "Other" />
             </Picker>
 
 
-          <Label style={styles.profile_title}>Birthday</Label>
+          <Label style={styles.profile_title}>生日</Label>
           <DatePicker
             style = {styles.date_picker}
             date = {this.state.birthday}
@@ -64,8 +76,8 @@ export default class EditProfileScreen extends React.Component {
             format = "YYYY-MM-DD"
             minDate = "1901-01-01"
             maxDate = "2099-12-31"
-            confirmBtnText = "Confirm"
-            cancelBtnText = "Cancel"
+            confirmBtnText = "確定"
+            cancelBtnText = "取消"
             customStyles = {{
               dateIcon: {
                 position: 'absolute',
@@ -80,14 +92,24 @@ export default class EditProfileScreen extends React.Component {
             onDateChange = {(date) => {this.setState({birthday: date})}}
           />
 
-          <Button style = {{ marginTop: 10 }}
+          <Button
             full
             rounded
             warning
             style={styles.profile_button}
             onPress = {() => {this.sendSurvey(this.state.name, this.state.gender, this.state.birthday); this.props.navigation.navigate('MainScreen');}}
           >
-            <Text style = {{ color: 'white' }}>Send answer</Text>
+            <Text style = {{ color: 'white' }}>更新個人資訊</Text>
+          </Button>
+
+          <Button
+            full
+            rounded
+            danger
+            style={styles.profile_button}
+            onPress = {() => {this.logoutUser(); this.props.navigation.navigate('WelcomScreen');}}
+          >
+            <Text style = {{ color: 'white' }}>登出</Text>
           </Button>
 
       </Container>
@@ -114,6 +136,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20
   },
   profile_button: {
-    marginTop: 100,
+    marginTop: 30,
   }
 });

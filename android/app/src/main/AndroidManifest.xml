@@ -26,6 +26,7 @@
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
       <service android:name="com.shinetechchina.react_native_screen_recorder.RecordService"/>
+      <meta-data android:name="com.wix.reactnativenotifications.gcmSenderId" android:value="5932728296\0"/>
     </application>
 
 </manifest>
